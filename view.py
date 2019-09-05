@@ -2,6 +2,9 @@ from model import *
 from controller import app
 from flask import Flask,render_template,request
 
+# Instancia única de data gracias al singleton
+data = Data()
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -12,7 +15,7 @@ def log():
     temperatura = request.args.get("temperatura")
     humedad     = request.args.get("humedad")
 
-    if (Modelo.writeData(tiempo,temperatura,humedad)):
+    if (data.writeData(tiempo,temperatura,humedad)):
         return render_template("mensaje.html",mensaje="Se creo el registro con exito")
 
     else:

@@ -3,6 +3,10 @@ import csv
 
 app = Flask(__name__)
 
+
+
+
+
 from view import *
 
 
